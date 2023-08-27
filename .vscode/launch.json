@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "name": "Launch Code1 file",
+            "request": "launch",
+            "program": "code1.js"
+        },
+        {
+            "type": "node",
+            "name": "Launch Code2 file",
+            "request": "launch",
+            "program": "code2.js"
+        }
+    ]
+}
