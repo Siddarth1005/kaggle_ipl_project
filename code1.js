@@ -169,10 +169,34 @@ class Matches{
         }
         return concidedRuns;
     }
+
+    numberOfTimesOnePlayerDismissedByAnother(){
+        let deliveries = this.deliveriesData;
+        let highestDismissedData = {};
+        for( let i = 0; i < deliveries.length; i++){
+            if (!(deliveries[i].bowler in highestDismissedData)){
+                highestDismissedData[deliveries[i].bowler] = {};
+            }
+        }
+        for (let i= 0; i < deliveries.length; i++){
+            if (deliveries[i].player_dismissed){
+                
+                if (!(deliveries[i].player_dismissed in highestDismissedData[deliveries[i].bowler])){
+                    highestDismissedData[deliveries[i].bowler][deliveries[i].player_dismissed] = 1;
+                }
+                else{
+                    highestDismissedData[deliveries[i].bowler][deliveries[i].player_dismissed] += 1;
+                }
+            }
+        }
+        return highestDismissedData
+        
+    }
 }
 
 
 
-let dataOutput = new Matches(iplMatchData,iplDeliveries).concidedRunsFromEachTeam();
+
+let dataOutput = new Matches(iplMatchData,iplDeliveries).numberOfTimesOnePlayerDismissedByAnother();
 console.log(dataOutput);
 
